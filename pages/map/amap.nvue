@@ -1,0 +1,129 @@
+<template>
+	<view class="map-view">
+		<map class="mapPoint" v-if="showMap" :latitude="latitude" :longitude="longitude" :markers="covers" :show-compass="true"
+			:show-location="true">
+		</map>
+		<view class="button-wrap">
+			<text class="map-button active-button">高德地图</text>
+			<text class="map-button" @click="onJumpAmap">2D地图</text>
+		</view>
+	</view>
+</template>
+
+<script>
+	import {
+		mapGetters
+	} from 'vuex';
+	import utils from '@/utils/index.js';
+	export default {
+		data() {
+			return {
+				latitude: '',
+				longitude: '',
+				covers: [],
+				coordinate: [],
+				maps: [],
+				type: '',
+				showMap: false
+			}
+		},
+		onLoad(option) {
+			console.log('amap-onLoad', this.latitude)
+			// uni.$on('toAmapData', (res) => {
+			// 	console.log(res)
+			// 	this.maps = res.data;
+			// 	console.log(this.maps);
+			// 	this.type = res.type;
+			// 	let amap = this.maps.filter(item => item.mapType == -1);
+			// 	this.coordinate = amap[0].coordinate;
+			// 	this.onPreviewAmap(this.coordinate)
+			// })
+			uni.getStorage({
+				key: 'maps',
+				success: (res) => {
+					this.maps = res.data.maps;
+					this.type = res.data.type;
+					let amap = this.maps.filter(item => item.mapType == -1);
+					this.coordinate = amap[0].coordinate;
+					this.onPreviewAmap(this.coordinate)
+				}
+			});
+		},
+		onUnload() {
+			// uni.$off('toAmapData');
+		},
+		methods: {
+			// 高德地图预览
+			onPreviewAmap(coordinate) {
+				console.log('coordinate', coordinate)
+				this.showMap = true;
+				this.latitude = coordinate[1];
+				this.longitude = coordinate[0];
+				this.covers.push({
+					latitude: this.latitude,
+					longitude: this.longitude,
+					iconPath: '../../static/point.png',
+				})
+			},
+			onJumpAmap() {
+				console.log(this.maps);
+				if (this.maps.length > 1) {
+					uni.redirectTo({
+						url: `/pages/map/cmap`
+					});
+				} else {
+					if (this.type == 1) {
+						let tips = '该设备未配置2D地图';
+						utils.toast(tips);
+					} else if (this.type == 2) {
+						let tips = '该点位未配置2D地图';
+						utils.toast(tips);
+					}
+				}
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.map-view {
+		flex: 1;
+
+		.button-wrap {
+			position: absolute;
+			padding: 0 56px;
+			bottom: 16px;
+			left: 0;
+			right: 0;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+
+			.map-button {
+				width: 90px;
+				height: 30px;
+				lineHeight: 30px;
+				textAlign: center;
+				boxShadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+				borderRadius: 15px;
+				fontSize: 15px;
+				backgroundColor: #ffffff;
+				color: #333333;
+			}
+
+			.disabled-button {
+				backgroundColor: #ededed;
+				color: #8d8d8d;
+			}
+
+			.active-button {
+				backgroundColor: $uni-color-primary;
+				color: #ffffff;
+			}
+		}
+
+		.mapPoint {
+			flex: 1;
+		}
+	}
+</style>

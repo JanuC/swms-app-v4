@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "dependencies": {
     "js-md5": "^0.7.3",
     "lodash": "^4.17.21",
@@ -6,5 +7,26 @@
     "mqtt": "^4.0.1",
     "socket.io-client": "^4.7.1",
     "vuex": "^4.1.0"
+=======
+  "name": "webo-itps",
+  "version": "0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://192.168.2.222:8099/android/webo-itps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "js-md5": "^0.7.3",
+    "moment": "^2.29.1",
+    "mqtt": "^3.0.0",
+    "uuid": "^8.3.2"
+>>>>>>> origin/swms-itps
   }
 }

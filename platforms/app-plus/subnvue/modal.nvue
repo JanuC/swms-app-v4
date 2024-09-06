@@ -1,0 +1,195 @@
+<template>
+	<view class="wrapper" @click.stop="closeMask">
+		<view class="popup-body">
+			<text class="popup-title">{{title}}</text>
+			<view>
+				<text class="popup-content">{{content}}</text>
+			</view>
+			<view class="popup-footer">
+				<view class="button-wrapper cancel-button-wrapper" @click="onClose">
+					<text class="popup-footer__button cancel-button">{{cancelButtonText}}</text>
+				</view>
+				<view class="button-wrapper affirm-button-wrapper" @click="onConfirm">
+					<text class="popup-footer__button affirm-button">{{affirmButtonText}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: '温馨提示',
+				content: '内容',
+				cancelButtonText: '取消',
+				affirmButtonText: '确认',
+			}
+		},
+		created() {
+			this.onShowModal();
+		},
+		beforeDestroy() {
+			uni.$off();
+		},
+		methods: {
+			closeMask() {
+				return false;
+			},
+			onShowModal() {
+				let vm = this;
+				uni.$on('onShowModal', (data) => {
+					vm.title = data.title || vm.title;
+					vm.content = data.content || data.content;
+				})
+			},
+			onConfirm() {
+				// uni.getCurrentSubNVue().hide();
+				uni.$emit('onModalClick', {
+					data: 'confirm'
+				});
+			},
+			onClose() {
+				// uni.getCurrentSubNVue().hide();
+				uni.$emit('onModalClick', {
+					data: 'close'
+				});
+			},
+		}
+	}
+</script>
+
+<style>
+	.wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0);
+		justify-content: center;
+		align-items: center;
+	}
+
+	.popup-body {
+		border-radius: 16rpx;
+		background-color: #FFFFFF;
+		position: absolute;
+		left: 55rpx;
+		right: 55rpx;
+	}
+
+	.popup-title {
+		text-align: center;
+		font-size: 36rpx;
+		padding: 30rpx;
+		color: #333333;
+		border-bottom-width: 1rpx;
+		border-bottom-color: #e5e5e5;
+	}
+
+	.error-title {
+		text-align: center;
+		font-size: 36rpx;
+		padding: 30rpx;
+		color: #ff3b30;
+		border-bottom-width: 1rpx;
+		border-bottom-color: #e5e5e5;
+	}
+
+	.popup-content {
+		text-align: center;
+		line-height: 40rpx;
+		font-size: 30rpx;
+		padding: 40rpx;
+		color: #333333;
+	}
+
+	.popup-footer {
+		height: 96rpx;
+		line-height: 96rpx;
+		border-top: 1rpx solid #e5e5e5;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.popup-footer__button {
+		font-size: 36rpx;
+	}
+
+	.affirm-button {
+		color: #306dfe;
+	}
+
+	.cancel-button {
+		color: #666666;
+	}
+
+	.button-wrapper {
+		flex: 1;
+		height: 96rpx;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.cancel-button-wrapper {
+		border-right-width: 1rpx;
+		border-right-color: #e5e5e5;
+	}
+
+	.success-tips {
+		font-size: 30rpx;
+		color: #306dfe;
+		margin-left: 10rpx;
+	}
+
+	.count-down {
+		text-align: center;
+		font-size: 26rpx;
+		color: #707070;
+	}
+
+	.task-tips__content {
+		padding: 40rpx;
+	}
+
+	.task-submit__content {
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 20rpx;
+	}
+
+	.success-content {
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 20rpx;
+	}
+
+	.fail-tips__wrap {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.fail-tips__content {
+		font-size: 26rpx;
+		line-height: 40rpx;
+		color: #000;
+	}
+
+	.location-info {
+		font-size: 26rpx;
+		line-height: 40rpx;
+		color: #306dfe;
+	}
+
+	.success-tips__contnet {
+		font-size: 26rpx;
+		line-height: 35rpx;
+		color: #000000;
+	}
+</style>

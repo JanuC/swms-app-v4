@@ -1,6 +1,10 @@
 <template>
 	<view class="uni-popup-share">
+<<<<<<< HEAD
 		<view class="uni-share-title"><text class="uni-share-title-text">{{shareTitleText}}</text></view>
+=======
+		<view class="uni-share-title"><text class="uni-share-title-text">{{title}}</text></view>
+>>>>>>> origin/swms-itps
 		<view class="uni-share-content">
 			<view class="uni-share-content-box">
 				<view class="uni-share-content-item" v-for="(item,index) in bottomData" :key="index" @click.stop="select(item,index)">
@@ -11,12 +15,17 @@
 			</view>
 		</view>
 		<view class="uni-share-button-box">
+<<<<<<< HEAD
 			<button class="uni-share-button" @click="close">{{cancelText}}</button>
+=======
+			<button class="uni-share-button" @click="close">取消</button>
+>>>>>>> origin/swms-itps
 		</view>
 	</view>
 </template>
 
 <script>
+<<<<<<< HEAD
 	import popup from '../uni-popup/popup.js'
 	import {
 	initVueI18n
@@ -37,6 +46,17 @@
 				default: false
 			}
 		},
+=======
+	export default {
+		name: 'UniPopupShare',
+		props: {
+			title: {
+				type: String,
+				default: '分享到'
+			}
+		},
+		inject: ['popup'],
+>>>>>>> origin/swms-itps
 		data() {
 			return {
 				bottomData: [{
@@ -59,6 +79,7 @@
 						icon: 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/0dacdbe0-50bf-11eb-8ff1-d5dcf8779628.png',
 						name: 'sina'
 					},
+<<<<<<< HEAD
 					// {
 					// 	text: '百度',
 					// 	icon: 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/1ec6e920-50bf-11eb-8a36-ebb87efcf8c0.png',
@@ -69,10 +90,23 @@
 					// 	icon: 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/2e0fdfe0-50bf-11eb-b997-9918a5dda011.png',
 					// 	name: 'more'
 					// }
+=======
+					{
+						text: '百度',
+						icon: 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/1ec6e920-50bf-11eb-8a36-ebb87efcf8c0.png',
+						name: 'copy'
+					},
+					{
+						text: '其他',
+						icon: 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/2e0fdfe0-50bf-11eb-b997-9918a5dda011.png',
+						name: 'more'
+					}
+>>>>>>> origin/swms-itps
 				]
 			}
 		},
 		created() {},
+<<<<<<< HEAD
 		computed: {
 			cancelText() {
 				return t("uni-popup.cancel")
@@ -81,6 +115,8 @@
 				return this.title || t("uni-popup.shareTitle")
 			}
 		},
+=======
+>>>>>>> origin/swms-itps
 		methods: {
 			/**
 			 * 选择内容
@@ -89,15 +125,24 @@
 				this.$emit('select', {
 					item,
 					index
+<<<<<<< HEAD
 				})
 				this.close()
 
+=======
+				}, () => {
+					this.popup.close()
+				})
+>>>>>>> origin/swms-itps
 			},
 			/**
 			 * 关闭窗口
 			 */
 			close() {
+<<<<<<< HEAD
 				if(this.beforeClose) return
+=======
+>>>>>>> origin/swms-itps
 				this.popup.close()
 			}
 		}
@@ -106,8 +151,11 @@
 <style lang="scss" scoped>
 	.uni-popup-share {
 		background-color: #fff;
+<<<<<<< HEAD
 		border-top-left-radius: 11px;
 		border-top-right-radius: 11px;
+=======
+>>>>>>> origin/swms-itps
 	}
 	.uni-share-title {
 		/* #ifndef APP-NVUE */
@@ -130,7 +178,11 @@
 		justify-content: center;
 		padding-top: 10px;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> origin/swms-itps
 	.uni-share-content-box {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -139,7 +191,11 @@
 		flex-wrap: wrap;
 		width: 360px;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> origin/swms-itps
 	.uni-share-content-item {
 		width: 90px;
 		/* #ifndef APP-NVUE */
@@ -150,22 +206,38 @@
 		padding: 10px 0;
 		align-items: center;
 	}
+<<<<<<< HEAD
 
 	.uni-share-content-item:active {
 		background-color: #f5f5f5;
 	}
 
+=======
+	
+	.uni-share-content-item:active {
+		background-color: #f5f5f5;
+	}
+	
+>>>>>>> origin/swms-itps
 	.uni-share-image {
 		width: 30px;
 		height: 30px;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> origin/swms-itps
 	.uni-share-text {
 		margin-top: 10px;
 		font-size: 14px;
 		color: #3B4144;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> origin/swms-itps
 	.uni-share-button-box {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -173,14 +245,22 @@
 		flex-direction: row;
 		padding: 10px 15px;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> origin/swms-itps
 	.uni-share-button {
 		flex: 1;
 		border-radius: 50px;
 		color: #666;
 		font-size: 16px;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> origin/swms-itps
 	.uni-share-button::after {
 		border-radius: 50px;
 	}

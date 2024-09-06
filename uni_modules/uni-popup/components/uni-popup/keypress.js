@@ -36,9 +36,15 @@ export default {
       }
     }
     document.addEventListener('keyup', listener)
+<<<<<<< HEAD
     // this.$once('hook:beforeDestroy', () => {
     //   document.removeEventListener('keyup', listener)
     // })
+=======
+    this.$once('hook:beforeDestroy', () => {
+      document.removeEventListener('keyup', listener)
+    })
+>>>>>>> origin/swms-itps
   },
 	render: () => {}
 }

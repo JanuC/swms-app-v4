@@ -1,0 +1,144 @@
+<template>
+	<view class="wrapper" @click="closeMask">
+		<view class="popup-body">
+			<text class="title">{{title}}</text>
+			<view class="total"><text class="total-text">{{content}}：</text></view>
+			<view class="content">
+				<textarea class="textarea" v-model="explain" placeholder="请输入说明..." />
+			</view>
+			<view class="footer">
+				<text type="default" class="operation-popup__button cancel-button" @click="onClosePopup">取消</text>
+				<text class="operation-popup__button confirm-button" type="primary" @click="onConfirm">确认</text>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: '温馨提示',
+				content: '请填无法完成说明',
+				explain: '',
+			}
+		},
+		created() {
+			this.onOpenPopup();
+		},
+		beforeDestroy() {
+			uni.$off('onShowDescriptionPopup');
+		},
+		methods: {
+			closeMask() {
+				return false;
+			},
+			onOpenPopup() {
+				let _this = this;
+				uni.$on('onShowDescriptionPopup', (content) => {
+					console.log('onShowDescriptionPopup', content)
+					this.explain = "";
+					this.content = content;
+					uni.getCurrentSubNVue().show('zoom-fade-out', 250)
+				})
+			},
+			onClosePopup() {
+				uni.getCurrentSubNVue().hide();
+				uni.$off('onDescriptionPopupConfirm');
+			},
+			// 确认
+			onConfirm() {
+				if (this.explain) {
+					uni.$emit('onDescriptionPopupConfirm', this.explain);
+					uni.getCurrentSubNVue().hide();
+					uni.$off('onDescriptionPopupConfirm')
+				} else {
+					uni.showToast({
+						title: '请输入说明...',
+						icon: 'none'
+					})
+				}
+			}
+		}
+	}
+</script>
+
+<style>
+	.wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0);
+		justify-content: center;
+		align-items: center;
+	}
+
+	.popup-body {
+		border-radius: 16rpx;
+		background-color: #FFFFFF;
+		position: absolute;
+		left: 20px;
+		right: 20px;
+	}
+
+	.title {
+		text-align: center;
+		font-size: 18px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		margin-left: 14px;
+		margin-right: 14px;
+		color: #333333;
+		border-bottom-width: 1rpx;
+		border-bottom-color: #e5e5e5;
+	}
+
+	.total {
+		padding: 15px;
+	}
+
+	.total-text {
+		font-size: 15px;
+		color: #333333;
+	}
+
+	.content {
+		margin: 0 40rpx;
+	}
+
+	.content .textarea {
+		font-size: 14px;
+		padding: 10px;
+		height: 105px;
+		background-color: #f5f5f5;
+	}
+
+	.footer {
+		padding: 20px 15px;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.operation-popup__button {
+		width: 110px;
+		height: 44px;
+		line-height: 44px;
+		text-align: center;
+		font-size: 18px;
+		border-radius: 8rpx;
+		border: solid 1rpx #e5e5e5;
+	}
+
+	.confirm-button {
+		color: #FFFFFF;
+		background-color: #9E4A63;
+	}
+
+	.cancel-button {
+		color: #333333;
+		background-color: #FFFFFF;
+		margin-right: 20px;
+	}
+</style>

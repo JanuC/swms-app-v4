@@ -45,7 +45,22 @@ export default {
 			state.userInfo = userInfo
 			uni.setStorageSync('userInfo', userInfo)
 		},
+<<<<<<< HEAD
 	},
 	actions: {
+=======
+		SET_SHOW_DOTS: (state, val) => {
+			console.log('SET_SHOW_DOTS', val);
+			uni.setStorageSync('showDots', val);
+			state.showDots = val;
+		}
+	},
+	actions: {
+		setShowDots({
+			commit
+		}, val) {
+			commit('SET_SHOW_DOTS', val)
+		},
+>>>>>>> origin/swms-itps
 	}
 }

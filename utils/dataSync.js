@@ -6,7 +6,11 @@ import moment from 'moment';
 import amap from "./amap.js";
 import {
 	generate_UUID
+<<<<<<< HEAD
 } from "../common/js/uuid.js"
+=======
+} from "@/common/js/uuid.js"
+>>>>>>> origin/swms-itps
 export default {
 	/**
 	 * 同步巡查列表

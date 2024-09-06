@@ -5,6 +5,7 @@
     "configurations" : [
         {
             "app-plus" : {
+<<<<<<< HEAD
                 "launchtype" : "local"
             },
             "default" : {
@@ -15,6 +16,15 @@
             },
             "mp-weixin" : {
                 "launchtype" : "local"
+=======
+                "launchtype" : "remote"
+            },
+            "default" : {
+                "launchtype" : "remote"
+            },
+            "h5" : {
+                "launchtype" : "remote"
+>>>>>>> origin/swms-itps
             },
             "type" : "uniCloud"
         },

@@ -1,15 +1,23 @@
 <template>
 	<view class="uni-popup-message">
+<<<<<<< HEAD
 		<view class="uni-popup-message__box fixforpc-width" :class="'uni-popup__'+type">
 			<slot>
 				<text class="uni-popup-message-text" :class="'uni-popup__'+type+'-text'">{{message}}</text>
 			</slot>
+=======
+		<view class="uni-popup-message__box fixforpc-width" :class="'uni-popup__'+[type]">
+			<text class="uni-popup-message-text" :class="'uni-popup__'+[type]+'-text'">{{message}}</text>
+>>>>>>> origin/swms-itps
 		</view>
 	</view>
 </template>
 
 <script>
+<<<<<<< HEAD
 	import popup from '../uni-popup/popup.js'
+=======
+>>>>>>> origin/swms-itps
 	/**
 	 * PopUp 弹出层-消息提示
 	 * @description 弹出层-消息提示
@@ -24,8 +32,12 @@
 	 */
 
 	export default {
+<<<<<<< HEAD
 		name: 'uniPopupMessage',
 		mixins:[popup],
+=======
+		name: 'UniPopupMessage',
+>>>>>>> origin/swms-itps
 		props: {
 			/**
 			 * 主题 success/warning/info/error	  默认 success
@@ -47,16 +59,23 @@
 			duration: {
 				type: Number,
 				default: 3000
+<<<<<<< HEAD
 			},
 			maskShow:{
 				type:Boolean,
 				default:false
 			}
 		},
+=======
+			}
+		},
+		inject: ['popup'],
+>>>>>>> origin/swms-itps
 		data() {
 			return {}
 		},
 		created() {
+<<<<<<< HEAD
 			this.popup.maskShow = this.maskShow
 			this.popup.messageChild = this
 		},
@@ -67,6 +86,20 @@
 				this.timer = setTimeout(()=>{
 					this.popup.close()
 				},this.duration)
+=======
+			this.popup.childrenMsg = this
+		},
+		methods: {
+			open() {
+				if (this.duration === 0) return
+				clearTimeout(this.popuptimer)
+				this.popuptimer = setTimeout(() => {
+					this.popup.close()
+				}, this.duration)
+			},
+			close() {
+				clearTimeout(this.popuptimer)
+>>>>>>> origin/swms-itps
 			}
 		}
 	}

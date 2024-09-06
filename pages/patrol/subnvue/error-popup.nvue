@@ -1,0 +1,278 @@
+<template>
+	<view class="wrapper" @click="closeMask">
+		<view class="popup-body">
+			<text v-if="typeStyle === 'default'" class="popup-title">{{title}}</text>
+			<text v-if="typeStyle === 'error'" class="error-title">{{title}}</text>
+			<view class="task-tips__content" v-if="taskSubmitTips == 'success'">
+				<view class="task-submit__content">
+					<icon type="success" size="15" color="#306dfe" />
+					<text class="success-tips">{{successTipsTitle}}</text>
+				</view>
+				<view v-if="successTipsContnet">
+					<text class="success-tips__contnet">{{successTipsContnet}}</text>
+				</view>
+				<view class="success-count-down">
+					<text class="count-down">倒计时:{{second}}秒</text>
+				</view>
+			</view>
+			<view class="task-tips__content" v-else-if="taskSubmitTips == 'fail'">
+				<view class="task-submit__content">
+					<icon type="warn" size="15" color="#fa5151" />
+					<text class="fail-tips">提交失败</text>
+				</view>
+				<view class="fail-tips__wrap">
+					<text class="fail-tips__content">数据保存至本地，请检查网络后，在</text><text
+						class="location-info">我的>数据同步</text><text class="fail-tips__content">中再次提交</text>
+				</view>
+			</view>
+			<view v-else>
+				<text class="popup-content">{{content}}</text>
+			</view>
+			<view class="popup-footer" @click="onConfirm(1)" v-if="buttonNumber === 1">
+				<text class="popup-footer__button affirm-button">{{affirmButtonText}}</text>
+			</view>
+			<view class="popup-footer" v-if="buttonNumber === 2">
+				<view class="button-wrapper cancel-button-wrapper" @click="onConfirm(0)">
+					<text class="popup-footer__button cancel-button">{{cancelButtonText}}</text>
+				</view>
+				<view class="button-wrapper affirm-button-wrapper" @click="onConfirm(1)">
+					<text class="popup-footer__button affirm-button">{{affirmButtonText}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: '温馨提示',
+				content: '内容',
+				cancelButtonText: '取消',
+				affirmButtonText: '确定',
+				typeStyle: 'default',
+				buttonNumber: 1,
+				confirmType: 1, // 1直接关闭, 2回调
+				taskSubmitTips: '', // success, fail
+				pageUrl: '',
+				second: 60,
+				timeOut: null,
+				successTipsContnet: '',
+				successTipsTitle: '任务提交成功'
+			}
+		},
+		created() {
+			console.log('tips-popup');
+			this.onShowPopup();
+		},
+		beforeDestroy() {
+			uni.$off('onErrorPopup');
+			clearInterval(this.timeOut);
+		},
+		methods: {
+			closeMask() {
+				return false;
+			},
+			onShowPopup() {
+				let _this = this;
+				uni.$on('onErrorPopup', (data) => {
+					_this.title = data.title || _this.title;
+					_this.content = data.content;
+					_this.affirmButtonText = data.affirmButtonText || _this.affirmButtonText;
+					_this.cancelButtonText = data.cancelButtonText || _this.cancelButtonText;
+					_this.buttonNumber = data.buttonNumber || _this.buttonNumber;
+					_this.typeStyle = data.type || _this.typeStyle;
+					_this.confirmType = data.confirmType || _this.confirmType;
+					_this.taskSubmitTips = data.taskSubmitTips || _this.taskSubmitTips;
+					_this.pageUrl = data.pageUrl || _this.pageUrl;
+					_this.successTipsTitle = data.successTipsTitle || _this.successTipsTitle;
+					_this.successTipsContnet = data.successTipsContnet || _this.successTipsContnet;
+					if (_this.taskSubmitTips == 'success') {
+						_this.second = 60;
+						clearInterval(this.timeOut);
+						_this.onCountdown()
+					}
+				})
+			},
+			onConfirm(type) {
+				let res = type ? 'confirm' : 'cancel';
+				const subNVue = uni.getCurrentSubNVue()
+				switch (this.confirmType) {
+					case 1:
+						this.onClosePopup();
+						break;
+					case 2: // 保存
+						this.onClosePopup();
+						uni.$emit('onTipsPopupSave', res);
+						break;
+					case 3: // 提交
+						this.onClosePopup();
+						uni.$emit('onTipsPopupConfirm', res);
+						uni.$off('onTipsPopupConfirm');
+						break;
+					default:
+						break;
+				}
+			},
+			onClosePopup() {
+				const subNVue = uni.getCurrentSubNVue();
+				subNVue.hide('auto');
+			},
+			// 倒计时
+			onCountdown() {
+				const subNVue = uni.getCurrentSubNVue();
+				this.timeOut = setInterval(() => {
+					if (this.second > 0) {
+						this.second--
+					} else if (this.second == 0) {
+						clearInterval(this.timeOut);
+						uni.$emit('onTipsPopupConfirm', 'confirm');
+						uni.$off('onTipsPopupConfirm');
+					}
+				}, 1000)
+			}
+		}
+	}
+</script>
+
+<style>
+	.wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0);
+		justify-content: center;
+		align-items: center;
+	}
+
+	.popup-body {
+		border-radius: 16rpx;
+		background-color: #FFFFFF;
+		position: absolute;
+		left: 55rpx;
+		right: 55rpx;
+	}
+
+	.popup-title {
+		text-align: center;
+		font-size: 18px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		margin-left: 14px;
+		margin-right: 14px;
+		color: #333333;
+	}
+
+	.error-title {
+		text-align: center;
+		font-size: 36rpx;
+		padding: 30rpx;
+		color: #ff3b30;
+		border-bottom-width: 1rpx;
+		border-bottom-color: #e5e5e5;
+	}
+
+	.popup-content {
+		text-align: center;
+		line-height: 24px;
+		font-size: 16px;
+		padding: 15px;
+		color: #333333;
+	}
+
+	.popup-footer {
+		height: 58px;
+		line-height: 58px;
+		border-top: 1rpx solid #e5e5e5;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.popup-footer__button {
+		font-size: 18px;
+	}
+
+	.affirm-button {
+		color: #9E4A63;
+	}
+
+	.cancel-button {
+		color: #666666;
+	}
+
+	.button-wrapper {
+		flex: 1;
+		height: 96rpx;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.cancel-button-wrapper {
+		border-right-width: 1rpx;
+		border-right-color: #e5e5e5;
+	}
+
+	.success-tips {
+		font-size: 17px;
+		color: #306dfe;
+		margin-left: 10px;
+	}
+
+	.fail-tips {
+		font-size: 17px;
+		color: #fa5151;
+		margin-left: 10px;
+	}
+
+	.count-down {
+		text-align: center;
+		font-size: 14px;
+		color: #707070;
+	}
+
+	.task-tips__content {
+		padding: 40rpx;
+	}
+
+	.task-submit__content {
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 20rpx;
+	}
+
+	.success-content {
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 20rpx;
+	}
+
+	.fail-tips__wrap {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.fail-tips__content {
+		font-size: 14px;
+		line-height: 24px;
+		color: #000;
+	}
+
+	.location-info {
+		font-size: 14px;
+		line-height: 24px;
+		color: #306dfe;
+	}
+
+	.success-tips__contnet {
+		font-size: 14px;
+		line-height: 24px;
+		color: #000000;
+	}
+</style>

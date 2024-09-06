@@ -1,9 +1,17 @@
 {
+<<<<<<< HEAD
     "name" : "传图工具",
     "appid" : "__UNI__001FAC1",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
+=======
+    "name" : "安全巡查",
+    "appid" : "__UNI__CEEFBE1",
+    "description" : "文博安全巡检巡查",
+    "versionName" : "0.61",
+    "versionCode" : 11,
+>>>>>>> origin/swms-itps
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
@@ -16,6 +24,7 @@
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
+<<<<<<< HEAD
             "autoclose" : true,
             "delay" : 0
         },
@@ -24,6 +33,20 @@
             "Camera" : {},
             "Record" : {},
             "VideoPlayer" : {}
+=======
+            "autoclose" : false,
+            "delay" : 0
+        },
+        "runmode" : "liberate",
+        /* 模块配置 */
+        "modules" : {
+            "SQLite" : {},
+            "Maps" : {},
+            "Geolocation" : {},
+            "Record" : {},
+            "VideoPlayer" : {},
+            "Camera" : {}
+>>>>>>> origin/swms-itps
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -32,6 +55,7 @@
                 "permissions" : [
                     "<uses-feature android:name=\"android.hardware.camera\"/>",
                     "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+<<<<<<< HEAD
                     "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.CAMERA\"/>",
@@ -53,11 +77,77 @@
             },
             /* ios打包配置 */
             "ios" : {
+=======
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_MOCK_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.EXPAND_STATUS_BAR\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_TASKS\"/>",
+                    "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.NFC\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_SMS\"/>",
+                    "<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>",
+                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.SEND_SMS\"/>",
+                    "<uses-permission android:name=\"android.permission.SYSTEM_ALERT_WINDOW\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SMS\"/>",
+                    "<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>"
+                ],
+                "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ],
+                "schemes" : [ "webo-ipis" ],
+                "minSdkVersion" : 21
+            },
+            /* ios打包配置 */
+            "ios" : {
+                "UIBackgroundModes" : "location",
+                "idfa" : false,
+>>>>>>> origin/swms-itps
                 "dSYMs" : false
             },
             /* SDK配置 */
             "sdkConfigs" : {
+<<<<<<< HEAD
                 "ad" : {}
+=======
+                "maps" : {
+                    "amap" : {
+                        "appkey_ios" : "5b260ebcdf3e94167944d157a140c8b0",
+                        "appkey_android" : "5b260ebcdf3e94167944d157a140c8b0"
+                    }
+                },
+                "ad" : {},
+                "geolocation" : {
+                    "amap" : {
+                        "__platform__" : [ "android" ],
+                        "appkey_ios" : "5b260ebcdf3e94167944d157a140c8b0",
+                        "appkey_android" : "5b260ebcdf3e94167944d157a140c8b0"
+                    },
+                    "system" : {
+                        "__platform__" : [ "android" ]
+                    }
+                },
+                "speech" : {
+                    "ifly" : {}
+                }
+>>>>>>> origin/swms-itps
             },
             "icons" : {
                 "android" : {
@@ -90,6 +180,33 @@
                         "spotlight@3x" : "unpackage/res/icons/120x120.png"
                     }
                 }
+<<<<<<< HEAD
+=======
+            },
+            "splashscreen" : {
+                "androidStyle" : "common",
+                "android" : {
+                    "hdpi" : "",
+                    "xhdpi" : "",
+                    "xxhdpi" : ""
+                }
+            }
+        },
+        "nativePlugins" : {
+            "webo_ipis" : {
+                "__plugin_info__" : {
+                    "name" : "webo-ipis",
+                    "description" : "文博安全巡检巡查插件",
+                    "platforms" : "Android",
+                    "url" : "",
+                    "android_package_name" : "",
+                    "ios_bundle_id" : "",
+                    "isCloud" : false,
+                    "bought" : -1,
+                    "pid" : "",
+                    "parameters" : {}
+                }
+>>>>>>> origin/swms-itps
             }
         }
     },
@@ -114,6 +231,10 @@
     },
     "uniStatistics" : {
         "enable" : false
+<<<<<<< HEAD
     },
     "vueVersion" : "2"
+=======
+    }
+>>>>>>> origin/swms-itps
 }
