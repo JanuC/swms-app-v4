@@ -1,0 +1,412 @@
+.content {
+	font-family: 'Source Han Sans CN';
+	font-weight: normal;
+	font-stretch: normal;
+	box-sizing: border-box;
+}
+
+.list-left_type {
+	letter-spacing: 30px;
+}
+
+.letter-spacing__0 {
+	letter-spacing: 0;
+}
+
+.input-placeholder {
+	font-size: 34rpx;
+	color: #cccccc;
+}
+
+.left-right-space__24 {
+	padding: 0 24rpx;
+}
+
+.left-right-space__15 {
+	padding: 0 15px;
+}
+
+.status_bar {
+	height: var(--status-bar-height);
+	background-color: #FFFFFF;
+	width: 100%;
+}
+
+.margin-left__20 {
+	margin-left: 20rpx;
+}
+
+.margin-right__20 {
+	margin-right: 20rpx;
+}
+
+.margin-bottom__20 {
+	margin-bottom: 20rpx;
+}
+
+.margin-top__30 {
+	margin-top: 30rpx;
+}
+
+.border-bottom__1 {
+	border-bottom: 1rpx solid rgba(229, 229, 229, 0.5);
+}
+
+.align-items__end {
+	align-items: end !important;
+}
+
+/**图片尺寸**/
+.patrol-photo {
+	width: 100px;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	background-color: #cccccc;
+	border-radius: 4px;
+	color: #999;
+	font-size: 12px;
+}
+
+.uni-loadmore {
+	text-align: center;
+	padding: 24rpx;
+	font-size: 30rpx;
+	color: #888888;
+}
+
+/**暂无数据**/
+.empty-data {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 60rpx;
+}
+.empty-data .no-data__image {
+	width: 183rpx;
+	margin-bottom: 20rpx;
+}
+.empty-data .no-data__text {
+	padding-right: 20rpx;
+	font-size: 16px;
+	color: #999999;
+}
+/**任务进度条**/
+.progress-bar {
+	width: 133px;
+	height: 10px;
+	background-color: #f2f3f5;
+	border-radius: 6px;
+	margin-right: 14px;
+}
+
+.progress-bar .progress {
+	width: 50%;
+	height: 10px;
+	background-color: #9E4A63;
+	border-radius: 6px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.progress::after {
+	content: "";
+	position: absolute;
+	right: -4px;
+	top: -5px;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	border: solid 3px #f2f3f5;
+}
+
+/**确认按钮**/
+.button-wrap {
+	margin: 0 12px;
+}
+
+.button-wrap button {
+	height: 49px;
+}
+
+/**双按钮**/
+.footer-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	// padding: 0 25px;
+}
+
+.footer-wrap .button-wrap {
+	width: 100%;
+}
+
+/**任务列表**/
+.list-children {
+	background-color: #FFFFFF;
+	margin-bottom: 5px;
+	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.08);
+}
+
+.list-children .list-header {
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1rpx solid #E5E5E5;
+}
+
+.list-number {
+	font-size: 17px;
+	color: #000000;
+	margin-right: 10px;
+}
+
+.abnormal-name {
+	color: #f2b549;
+}
+
+
+.list-content {
+	padding: 6px 0 4px;
+}
+
+.list-content .list-content__item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 4px 10px;
+	font-size: 15px;
+	color: #888888;
+}
+
+.list-content .list-right__content {
+	display: flex;
+	align-items: center;
+}
+
+.list-content .list-right__tabs {
+	width: 210px;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+}
+
+.list-content .list-tabs {
+	padding: 0 4px;
+	text-align: center;
+	background-color: #ebebeb;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-left: 5px;
+
+	&:nth-child(-n+3) {
+		margin-top: 0;
+	}
+}
+
+.delimiter {
+	padding: 0 6px;
+}
+
+.point-wrap {
+	background-color: #fff;
+	overflow: hidden;
+	padding-left: 15px;
+	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.08);
+}
+
+.point-wrap .point-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.point-wrap .point-name {
+	height: 44px;
+	flex: 1;
+	padding-right: 10px;
+	margin-left: 10px;
+	font-size: 17px;
+	color: #333333;
+	border-bottom: 1px solid #e5e5e5;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.point-wrap .point-finish {
+	color: #00b578;
+}
+
+.point-title {
+	border-bottom: 1px solid #e5e5e5;
+	padding: 10px 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.point-name {
+	font-size: 19px;
+	color: #333333;
+}
+
+.abnormal-button {
+	width: 72px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	background-color: #e7f1ff;
+	border-radius: 13px;
+	font-size: 12px;
+	color: #9E4A63;
+}
+
+.point-content {
+	padding: 15px;
+}
+
+.point-content .point-info__item {
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+
+.point-content .point-info__item .label {
+	color: #999999;
+}
+
+.point-content .point-info__item .content {
+	color: #4d4d4d;
+}
+
+.point-content .point-info__item .normal-result {
+	color: #00b578;
+}
+
+.point-content .point-info__item .abnormal-result {
+	color: #f2b549;
+}
+
+.point-content .oint-info__location {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.point-content .map-icon {
+	height: 18px;
+}
+
+/**任务状态**/
+.list-status {
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+}
+
+.details-status {
+	width: 80px;
+	justify-content: flex-end;
+}
+
+.status-icon {
+	width: 13px;
+	height: 13px;
+	margin-right: 5px;
+}
+
+.right-icon {
+	width: 9px;
+	height: 15px;
+	margin-left: 10px;
+}
+
+.list-status .list-status__text1 {
+	color: #306dfe;
+}
+
+.list-status .list-status__text2 {
+	color: #00b578;
+}
+
+.list-status .list-status__text3 {
+	color: #fa5151;
+}
+
+.list-status .list-status__text4 {
+	color: #f1ab2f;
+}
+
+/* 左侧标签样式 */
+.border-left2px {
+	border-left: 2px rgba(50, 115, 220, 1) solid;
+	padding-left: 4px;
+	height: 16px;
+	display: flex;
+	align-items: center;
+}
+
+/**canvas**/
+.canvas-element {
+	width: 100%;
+	height: 500rpx;
+	background-color: #ffffff;
+	position: absolute;
+	left: -500px;
+}
+
+/* 扫一扫相关 */
+.scanit-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 10px auto 5px auto;
+}
+
+.ceiling-button {
+	border-top: 1px solid rgba(227, 227, 227, 0.4);
+	position: fixed;
+	background-color: #FFFFFF;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 99;
+	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.08);
+}
+
+.scanit-button {
+	width: 72px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background-color: #9E4A63;
+	border-radius: 15px;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+
+.scanit-tips {
+	padding: 5px 0;
+	font-size: 12px;
+}
+
+.devices-scroll {
+	margin-top: 30px;
+}
+
+image {
+	will-change: transform
+}
+
+uni-page-wrapper {}
+
+uni-page-body,
+body {
+	background-color: #F5F5F5;
+	min-height: 100%;
+	height: auto;
+}

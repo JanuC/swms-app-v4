@@ -1,0 +1,578 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/tabbar/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false,
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"pullToRefresh": {
+						"support": false
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/user/login",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": false,
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"subNVues": [{
+						"id": "login-tips-popup",
+						"path": "platforms/app-plus/subnvue/tips-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}]
+				}
+			}
+		},
+		{
+			"path": "pages/error/404",
+			"style": {
+				"navigationBarTitleText": "404"
+			}
+		},
+		{
+			"path": "pages/popup/ipis-popup",
+			"style": {
+				"navigationStyle": "custom",
+				"backgroundColor": "transparent",
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false,
+					"animationType": "fade-in",
+					"background": "transparent",
+					"popGesture": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/popup/operate-popup",
+			"style": {
+				"navigationStyle": "custom",
+				"backgroundColor": "transparent",
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false,
+					"animationType": "fade-in",
+					"background": "transparent",
+					"popGesture": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/popup/warning-popup",
+			"style": {
+				"navigationStyle": "custom",
+				"backgroundColor": "transparent",
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false,
+					"animationType": "fade-in",
+					"background": "transparent",
+					"popGesture": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/popup/page-loading",
+			"style": {
+				"navigationStyle": "custom",
+				"backgroundColor": "transparent",
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false,
+					"animationType": "fade-in",
+					"background": "transparent",
+					"popGesture": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/user/engineer",
+			"style": {
+				"navigationBarTitleText": "工程模式",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"subNVues": [{
+							"id": "engineer-popup",
+							"path": "pages/user/user-popup",
+							"type": "popup",
+							"style": {
+								"background": "transparent"
+							}
+						},
+						{
+							"id": "loading-popup",
+							"path": "platforms/app-plus/subnvue/loading-popup",
+							"type": "popup",
+							"style": {
+								"background": "transparent"
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"path": "pages/user/password",
+			"style": {
+				"navigationBarTitleText": "修改密码",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/tabbar/my",
+			"style": {
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false,
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"pullToRefresh": {
+						"support": false
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/inspection/list",
+			"style": {
+				"navigationBarTitleText": "巡查",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"subNVues": [{
+						"id": "loading-popup",
+						"path": "platforms/app-plus/subnvue/loading-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}]
+				}
+			}
+		},
+		{
+			"path": "pages/inspection/details",
+			"style": {
+				"navigationBarTitleText": "巡查任务",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#333333",
+						"titleSize": "16px",
+						"backButton": {
+							"color": "#9E4A63"
+						},
+						"buttons": [{
+							"text": "转派",
+							"fontSize": "16px",
+							"color": "#9E4A63"
+						}]
+					},
+					"subNVues": [{
+							"id": "inspection-tips-popup",
+							"path": "platforms/app-plus/subnvue/tips-popup",
+							"type": "popup",
+							"style": {
+								"background": "transparent"
+							}
+						},
+						{
+							"id": "operation-popup",
+							"path": "platforms/app-plus/subnvue/operation-popup",
+							"type": "popup",
+							"style": {
+								"background": "transparent"
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"path": "pages/patrol/list",
+			"style": {
+				"navigationBarTitleText": "巡检",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/patrol/details",
+			"style": {
+				"navigationBarTitleText": "巡检任务",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#333333",
+						"titleSize": "16px",
+						"backButton": {
+							"color": "#9E4A63"
+						},
+						"buttons": [{
+							"text": "转派",
+							"fontSize": "16px",
+							"color": "#9E4A63"
+						}]
+					},
+					"subNVues": [{
+						"id": "task-tips-popup",
+						"path": "platforms/app-plus/subnvue/tips-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}]
+				}
+			}
+		},
+		{
+			"path": "pages/transfer/redeploy",
+			"style": {
+				"navigationBarTitleText": "任务转派",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"subNVues": [{
+						"id": "redeploy-tips-popup",
+						"path": "platforms/app-plus/subnvue/tips-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}]
+				}
+			}
+		},
+		{
+			"path": "pages/transfer/userList",
+			"style": {
+				"navigationBarTitleText": "选择接收人",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/exception/list",
+			"style": {
+				"navigationBarTitleText": "上报记录",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/exception/report",
+			"style": {
+				"navigationBarTitleText": "上报异常",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#333333",
+						"titleSize": "16px",
+						"backButton": {
+							"color": "#9E4A63"
+						},
+						"buttons": [{
+							"text": "记录",
+							"fontSize": "16px",
+							"color": "#9E4A63"
+						}]
+					},
+					"subNVues": [{
+						"id": "exception-tips-popup",
+						"path": "platforms/app-plus/subnvue/tips-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}]
+				}
+			}
+		},
+		{
+			"path": "pages/notice/list",
+			"style": {
+				"navigationBarTitleText": "通知",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/notice/details",
+			"style": {
+				"navigationBarTitleText": "通知详情",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/system/cache",
+			"style": {
+				"navigationBarTitleText": "清除缓存",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/synchronize/index",
+			"style": {
+				"navigationBarTitleText": "同步数据",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/system/about",
+			"style": {
+				"navigationBarTitleText": "关于设备",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/card/list",
+			"style": {
+				"navigationBarTitleText": "卡片记录",
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 50,
+				"app-plus": {
+					"pullToRefresh": {
+						"color": "#fff000",
+						"style": "circle"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/card/replace",
+			"style": {
+				"navigationBarTitleText": "卡片更换",
+				"enablePullDownRefresh": false,
+				"titleNView": {
+					"titleColor": "#333333",
+					"backButton": {
+						"color": "#9E4A63"
+					},
+					"buttons": [{
+						"text": "更换记录",
+						"width": "60px",
+						"fontSize": "14px",
+						"color": "#9E4A63"
+					}]
+				},
+				"app-plus": {
+					"subNVues": [{
+						"id": "card-popup",
+						"path": "platforms/app-plus/subnvue/card-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}]
+				}
+			}
+		},
+		{
+			"path": "pages/card/device",
+			"style": {
+				"navigationBarTitleText": "设备点位",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/warning/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/map/amap",
+			"style": {
+				"navigationBarTitleText": "高德地图",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/map/cmap",
+			"style": {
+				"navigationBarTitleText": "2D地图",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/card/details",
+			"style": {
+				"navigationBarTitleText": "更换详情",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/exception/details",
+			"style": {
+				"navigationBarTitleText": "异常详情",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/exception/voice",
+			"style": {
+				"navigationStyle": "custom",
+				"backgroundColor": "transparent",
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false,
+					"animationType": "fade-in",
+					"background": "transparent",
+					"popGesture": "none"
+				}
+			}
+		}, {
+			"path": "pages/record/record",
+			"style": {
+				"navigationBarTitleText": "打卡记录",
+				"enablePullDownRefresh": true
+			}
+		}, {
+			"path": "pages/patrol/device-details",
+			"style": {
+				"navigationBarTitleText": "设备详情",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#333333",
+						"titleSize": "16px",
+						"backButton": {
+							"color": "#9E4A63"
+						},
+						"buttons": [{
+							"text": "扫一扫",
+							"fontSize": "16px",
+							"width": "70px",
+							"color": "#9E4A63"
+						}],
+						"splitLine": {
+							"color": "#e5e5e5",
+							"height": "1px"
+						}
+					},
+					"subNVues": [{
+						"id": "device-details-popup",
+						"path": "pages/patrol/subnvue/description-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}, {
+						"id": "norm-details-popup",
+						"path": "pages/patrol/subnvue/popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}, {
+						"id": "device-tips-popup",
+						"path": "pages/patrol/subnvue/error-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}]
+				}
+			}
+		}, {
+			"path": "pages/inspection/pointDetails",
+			"style": {
+				"navigationBarTitleText": "巡查详情",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#333333",
+						"titleSize": "16px",
+						"backButton": {
+							"color": "#9E4A63"
+						},
+						"buttons": [{
+							"text": "扫一扫",
+							"fontSize": "16px",
+							"width": "70px",
+							"color": "#9E4A63"
+						}],
+						"splitLine": {
+							"color": "#e5e5e5",
+							"height": "1px"
+						}
+					},
+					"subNVues": [{
+						"id": "point-popup",
+						"path": "pages/patrol/subnvue/description-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}, {
+						"id": "point-details-popup",
+						"path": "platforms/app-plus/subnvue/tips-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}, {
+						"id": "point-tips-popup",
+						"path": "pages/patrol/subnvue/error-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}]
+				}
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#9E4A63",
+		"borderStyle": "#e3e3e3",
+		"backgroundColor": "#ffffff",
+		"fontSize": "13px",
+		"iconWidth": "20px",
+		"spacing": "4px",
+		"height": "51px",
+		"list": [{
+			"current": 0,
+			"pagePath": "pages/tabbar/index",
+			"iconPath": "static/home_normal.png",
+			"selectedIconPath": "static/home_normal-1_swms.png",
+			"text": "首页"
+		}, {
+			"current": 1,
+			"pagePath": "pages/tabbar/my",
+			"iconPath": "static/personalcenter_selected.png",
+			"selectedIconPath": "static/personalcenter_selected-1_swms.png",
+			"text": "我的"
+		}]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "webo",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF",
+		// "rpxCalcMaxDeviceWidth": 320,
+		// "rpxCalcBaseDeviceWidth": 320,
+		// "rpxCalcIncludeWidth": 320,
+		"app-plus": {
+			"titleNView": {
+				"titleColor": "#333333",
+				"titleSize": "16px",
+				"backButton": {
+					"color": "#9E4A63"
+				},
+				"splitLine": {
+					"color": "#E5E5E5"
+				}
+			}
+		}
+	}
+}

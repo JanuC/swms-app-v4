@@ -1,0 +1,101 @@
+<template>
+	<view class="wrapper" @click="closeMask">
+		<view class="popup-body">
+			<text class="popup-title">{{title}}</text>
+			<view class="close">
+				<image @click="onClosePopup" class="close-img" src="/static/close_1.png" mode="scaleToFill"></image>
+			</view>
+			<scroll-view class="popup-content" scroll-y>
+				<u-parse className="content-text" :content="content"></u-parse>
+			</scroll-view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: '操作规范',
+				content: '内容',
+			}
+		},
+		created() {
+			this.onShowPopup()
+		},
+		beforeDestroy() {
+			uni.$off()
+		},
+		methods: {
+			closeMask() {
+				return false;
+			},
+			onShowPopup() {
+				let _this = this;
+				uni.$on('onshownormpopup', (data) => {
+					_this.title = data.title || _this.title;
+					_this.content = data.content;
+					uni.getCurrentSubNVue().show('zoom-fade-out', 250)
+				})
+			},
+			onClosePopup() {
+				uni.getCurrentSubNVue().hide()
+			},
+		}
+	}
+</script>
+
+<style>
+	.wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0);
+		justify-content: center;
+		align-items: center;
+	}
+
+	.close {
+		position: absolute;
+		top: 35rpx;
+		right: 40rpx;
+
+	}
+
+	.close-img {
+		width: 36rpx;
+		height: 36rpx;
+	}
+
+	.popup-body {
+		border-radius: 16rpx;
+		background-color: #FFFFFF;
+		position: absolute;
+		left: 55rpx;
+		right: 55rpx;
+	}
+
+	.popup-title {
+		text-align: center;
+		font-size: 36rpx;
+		padding-top: 35rpx;
+		padding-bottom: 35rpx;
+		margin-left: 40rpx;
+		margin-right: 40rpx;
+		color: #333333;
+		border-bottom-width: 1rpx;
+		border-bottom-color: #e5e5e5;
+	}
+
+	.popup-content {
+		padding: 40rpx;
+		height: 900rpx;
+	}
+
+	.content-text {
+		font-size: 32rpx;
+		line-height: 43rpx;
+	}
+</style>

@@ -1,0 +1,38 @@
+<template>
+	<view class="wrapper">
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: '加载中...',
+			}
+		},
+		created() {
+			let _this = this;
+			uni.$on('loading-popup', (data) => {
+				_this.title = data.title || _this.title;
+				uni.showLoading({
+					title: _this.title
+				})
+			})
+		},
+		beforeDestroy() {
+			// uni.$off()
+		},
+		methods: {}
+	}
+</script>
+
+<style>
+	.wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+</style>

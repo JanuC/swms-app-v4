@@ -1,0 +1,88 @@
+{
+  "name": "webo-ipis",
+  "id": "webo_ipis",
+  "version": "1.0",
+  "description": "文博安全巡检巡查插件",
+  "_dp_type":"nativeplugin",
+  "_dp_nativeplugin":{
+    "android": {
+      "plugins": [
+        {
+          "type": "module",
+          "name": "webo_ipis_nfcRead",
+          "class": "com.webo.webo_ipis.utils.nfc.NfcRead"
+        },
+        {
+          "type": "module",
+          "name": "webo_ipis_toast",
+          "class": "com.webo.webo_ipis.utils.nfc.ToastUtils"
+        },
+        {
+          "type": "module",
+          "name": "webo_ipis_notify",
+          "class": "com.webo.webo_ipis.utils.notify.NotifyModule"
+        },
+        {
+          "type": "module",
+          "name": "webo_ipis_socket",
+          "class": "com.webo.webo_ipis.utils.socket.SocketModule"
+        },
+        {
+          "type": "module",
+          "name": "webo_ipis_mqtt",
+          "class": "com.webo.webo_ipis.utils.hiveMQ.MQModule"
+        }
+      ],
+      "integrateType": "aar",
+      "dependencies": [
+        "com.android.support:appcompat-v7:28.0.0",
+        "junit:junit:4.+",
+        "com.android.support.test:runner:1.0.2",
+        "com.android.support.test.espresso:espresso-core:3.0.2",
+        "com.android.support:percent:28.0.0",
+        "io.github.bookzhan:bzcamera:1.0.22@aar",
+        "io.github.bookzhan:bzyuv:1.1.17@aar",
+        "io.reactivex.rxjava2:rxjava:2.1.16",
+        "io.reactivex.rxjava2:rxandroid:2.0.2",
+        "com.hivemq:hivemq-mqtt-client-shaded:1.2.2",
+        "net.sourceforge.streamsupport:android-retrostreams:1.7.2",
+        "net.sourceforge.streamsupport:android-retrofuture:1.7.2",
+        {
+          "id": "com.androidUtils:androidUtils",
+          "source": "implementation ('com.androidUtils:androidUtils:1.0.16'){\n        exclude group: 'com.github.bumptech.glide'\n    }"
+        },
+        {
+          "id": "io.socket:socket.io-client",
+          "source": "implementation('io.socket:socket.io-client:1.0.1') {\n        exclude group: 'org.json', module: 'json'\n    }"
+        }
+      ],
+      "compileOptions": {
+        "sourceCompatibility": "1.8",
+        "targetCompatibility": "1.8"
+      },
+      "abis": [
+        "armeabi-v7a",
+        "arm64-v8a",
+        "x86",
+        "armeabi",
+        "x86_64"
+      ],
+      "minSdkVersion": "21",
+      "permissions": [
+        "android.permission.GET_TASKS",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.REORDER_TASKS",
+        "android.permission.REQUEST_INSTALL_PACKAGES",
+        "android.permission.NFC",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.INTERNET",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.CAMERA",
+        "android.permission.VIBRATE",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.RECORD_AUDIO"
+      ]
+    }
+  }
+}

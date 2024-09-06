@@ -1,0 +1,168 @@
+<template>
+	<view class="map-view">
+		<map v-if="showComponents==-1" class="mapPoint" :latitude="latitude" :longitude="longitude" :markers="covers"
+			:show-compass="true" :show-location="true">
+		</map>
+		<view class="2d-map" v-if="showComponents==0">
+			<Cmap :mapSrc="mapSrc" :coordinate="coordinate" />
+		</view>
+		<view class="button-wrap">
+			<text :class="['map-button', activeName==-1?'active-button':'']" @click="mapSwitch(-1)">高德地图</text>
+			<text :class="['map-button', activeName==0?'active-button':'']" @click="mapSwitch(0)">2D地图</text>
+		</view>
+	</view>
+</template>
+
+<script>
+	import {
+		mapGetters
+	} from 'vuex';
+	import db from '@/utils/db.js';
+	import utils from '@/utils/index.js';
+	import Cmap from './cmap.vue';
+	export default {
+		data() {
+			return {
+				id: '',
+				latitude: '',
+				longitude: '',
+				covers: [],
+				type: 1,
+				maps: [],
+				activeName: -1,
+				mapSrc: '',
+				coordinate: [],
+				showComponents: 1,
+				links: uni.getStorageSync('links')
+			}
+		},
+		components: {
+			Cmap
+		},
+		computed: {
+			...mapGetters({
+				getUsers: 'user/getUserInfo'
+			})
+		},
+		onReady() {
+			console.log('onReady')
+			// this.context = uni.createCanvasContext('canvas', this);
+		},
+		onLoad(option) {
+			this.type = option.type;
+			this.id = option.id;
+		},
+		mounted() {
+			this.getMaps(this.id);
+		},
+		methods: {
+			//获取地图信息
+			getMaps(id) {
+				let select =
+					`SELECT * FROM ipis_patrol_devices WHERE id="${id}" AND userid="${this.getUsers.id}"`;
+				db.selectSQL(select).then(res => {
+					if (res.length > 0) {
+						this.maps = JSON.parse(res[0].map);
+						console.log(this.maps);
+						this.activeName = this.maps[0].mapType;
+						let title = this.activeName == -1 ? '高德地图' : '2D地图';
+						uni.setNavigationBarTitle({
+							title: title
+						});
+						let coordinate = this.maps[0].coordinate;
+						if (this.activeName == -1) {
+							this.onPreviewAmap(coordinate);
+						} else {
+							this.onPreviewMap(this.maps[0].mapPic, coordinate);
+						}
+					}
+				})
+			},
+			mapSwitch(val) {
+				let check = this.maps.filter(item => item.mapType == val);
+				console.log(check, this.maps)
+				if (check.length > 0) {
+					this.activeName = val;
+					let title = val == -1 ? '高德地图' : '2D地图';
+					uni.setNavigationBarTitle({
+						title: title
+					});
+					let coordinate = check[0].coordinate;
+					if (this.activeName == -1) {
+						this.onPreviewAmap(coordinate);
+					} else {
+						this.onPreviewMap(check[0].mapPic, coordinate);
+					}
+				} else {
+					if (this.type == 1) {
+						let tips = val == -1 ? '该设备未配置高德地图' : '该设备未配置2D地图';
+						utils.toast(tips);
+					} else if (this.type == 2) {
+						let tips = val == -1 ? '该点位未配置高德地图' : '该点位未配置2D地图';
+						utils.toast(tips);
+					}
+				}
+			},
+			// 高德地图预览
+			onPreviewAmap(coordinate) {
+				this.latitude = coordinate[1];
+				this.longitude = coordinate[0];
+				this.covers.push({
+					latitude: this.latitude,
+					longitude: this.longitude,
+					iconPath: '../../static/point.png',
+				});
+				this.showComponents = -1;
+			},
+			// 2D地图预览
+			onPreviewMap(src, coordinate) {
+				this.mapSrc = this.links.preview + src;
+				this.coordinate = coordinate;
+				this.showComponents = 0;
+			},
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.map-view {
+		flex: 1;
+
+		.button-wrap {
+			position: absolute;
+			padding: 0 56px;
+			bottom: 16px;
+			left: 0;
+			right: 0;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+
+			.map-button {
+				width: 90px;
+				height: 30px;
+				lineHeight: 30px;
+				textAlign: center;
+				boxShadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+				borderRadius: 15px;
+				fontSize: 15px;
+				backgroundColor: #ffffff;
+				color: #333333;
+			}
+
+			.disabled-button {
+				backgroundColor: #ededed;
+				color: #8d8d8d;
+			}
+
+			.active-button {
+				backgroundColor: $uni-color-primary;
+				color: #ffffff;
+			}
+		}
+
+		.mapPoint {
+			flex: 1;
+		}
+	}
+</style>

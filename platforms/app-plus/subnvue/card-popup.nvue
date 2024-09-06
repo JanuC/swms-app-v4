@@ -1,0 +1,267 @@
+<template>
+	<view class="wrapper" @click="closeMask">
+		<view class="popup-body">
+			<text class="title">消息</text>
+			<text class="error-title">本次换卡关联的{{typeText}}</text>
+			<view class="list list-title">
+				<text class="list-label">设备/点位</text>
+				<text class="list-label">类型</text>
+			</view>
+			<view class="listBox">
+				<scroller class="scroll">
+					<view class="list" v-for='item in cardInfo.data'>
+						<text class="list-label">{{item.name}}</text>
+						<text class="list-label">{{item.type}}</text>
+					</view>
+				</scroller>
+			</view>
+			<view class="footer">
+				<!-- <text type="default" class="operation-popup__button cancel-button" @click="onClosePopup">取消</text> -->
+				<text class="operation-popup__button confirm-button" type="primary" @click="onConfirm">确认</text>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: '温馨提示',
+				confirmButtonText: '确认',
+				cancelButtonText: '取消',
+				typeStyle: 'default',
+				total: 0,
+				pointData: [],
+				currentIndex: 0,
+				typeText: '',
+				listData: [{
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}, {
+					name: '安防设备',
+					type: '测试nfc重复'
+				}]
+			}
+		},
+		computed: {
+			cardInfo() {
+				this.typeText = this.$store.state.app.cardInfo.type == 0 ? '设备' : '巡检点'
+				return this.$store.state.app.cardInfo
+			}
+		},
+
+		created() {
+			this.onOpenPopup();
+		},
+		beforeDestroy() {
+			uni.$off('onShowOperationPopup');
+		},
+		methods: {
+			closeMask() {
+				return false;
+			},
+			onOpenPopup() {
+				let _this = this;
+				uni.$on('onShowOperationPopup', () => {
+					uni.getCurrentSubNVue().show('zoom-fade-out', 250)
+				})
+			},
+			onClosePopup() {
+				uni.getCurrentSubNVue().hide();
+			},
+			// 下一个
+			onNextStep() {
+				if (this.pointData[this.currentIndex].incompleteReason) {
+					this.currentIndex += 1;
+				} else {
+					uni.showToast({
+						title: '请输入说明...',
+						icon: 'none'
+					})
+				}
+			},
+			// 上一个
+			onLastStep() {
+				this.currentIndex -= 1;
+			},
+			// 确认
+			onConfirm() {
+				uni.$emit('onCardPopupConfirm');
+				uni.getCurrentSubNVue().hide();
+			}
+		}
+	}
+</script>
+
+<style>
+	.wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0);
+		justify-content: center;
+		align-items: center;
+	}
+
+	.popup-body {
+		border-radius: 16rpx;
+		background-color: #FFFFFF;
+		position: absolute;
+		left: 55rpx;
+		right: 55rpx;
+	}
+
+	.title {
+		text-align: center;
+		font-size: 36rpx;
+		padding-top: 30rpx;
+		padding-bottom: 30rpx;
+		margin-left: 40rpx;
+		margin-right: 40rpx;
+		color: #333333;
+		border-bottom-width: 1px;
+		border-bottom-color: #e5e5e5;
+	}
+
+	.error-title {
+		text-align: center;
+		font-size: 36rpx;
+		padding-top: 30rpx;
+		color: #ff3b30;
+	}
+
+	.total {
+		padding: 50rpx 40rpx;
+	}
+
+	.total-text {
+		font-size: 15px;
+		color: #333333;
+	}
+
+	.location {
+		padding: 20rpx 40rpx;
+	}
+
+	.location-text {
+		font-size: 15px;
+		color: #707070;
+	}
+
+	.content {
+		margin: 0 40rpx;
+	}
+
+	.content .textarea {
+		font-size: 30rpx;
+		padding: 20rpx;
+		height: 176rpx;
+		background-color: #f5f5f5;
+	}
+
+	.footer {
+		padding: 40rpx;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.operation-popup__button {
+		width: 270rpx;
+		height: 80rpx;
+		line-height: 80rpx;
+		text-align: center;
+		font-size: 36rpx;
+		border-radius: 8rpx;
+		border: solid 2rpx #e5e5e5;
+	}
+
+	.confirm-button {
+		/* width: 120rpx; */
+		color: #FFFFFF;
+		background-color: #306dfe;
+	}
+
+	.cancel-button,
+	.laststep-button {
+		margin-right: 20rpx;
+		font-size: 36rpx;
+	}
+
+	.cancel-button {
+		color: #333333;
+		background-color: #FFFFFF;
+	}
+
+	.listBox {
+		height: 200px;
+		padding: 0 20px;
+	}
+
+
+	.list {
+		justify-content: center;
+		flex-direction: row;
+		margin: 2px 0;
+	}
+
+	.list-title {
+		padding: 0 6px;
+		margin-left: 40rpx;
+		margin-right: 40rpx;
+		background-color: rgba(217, 220, 225, 0.5);
+	}
+
+
+	.list .list-label {
+		flex: 1;
+		font-size: 15px;
+		padding: 6px;
+	}
+
+
+	.scroll {
+		height: 800px;
+	}
+</style>
