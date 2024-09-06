@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "js-md5": "^0.7.3",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "mqtt": "^4.0.1",
+    "socket.io-client": "^4.7.1",
+    "vuex": "^4.1.0"
+  }
+}

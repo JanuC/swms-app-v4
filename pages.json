@@ -1,0 +1,185 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "感知预警平台",
+				"app-plus": {
+					"titleNView": true,
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"pullToRefresh": {
+						"support": false
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/devOps/devOps",
+			"style": {
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false,
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"pullToRefresh": {
+						"support": false
+					}
+				}
+			}
+		}, {
+			"path": "pages/alarm/alarm",
+			"style": {
+				"navigationBarTitleText": "告警列表",
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 5,
+				"app-plus": {
+					"titleNView": true,
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"pullToRefresh": {
+						"support": true
+					}
+				}
+			}
+		}, {
+			"path": "pages/alarm/alarmInfo",
+			"style": {
+				"navigationBarTitleText": "告警详情",
+				"app-plus": {
+					"titleNView": true,
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"pullToRefresh": {
+						"support": false
+					}
+				}
+			}
+		}, {
+			"path": "pages/alarm/audio",
+			"style": {
+				"navigationBarTitleText": "录音",
+				"app-plus": {
+					"titleNView": true,
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"pullToRefresh": {
+						"support": false
+					}
+				}
+			}
+		}, {
+			"path": "pages/order/order",
+			"style": {
+				"navigationBarTitleText": "工单列表",
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 5,
+				"app-plus": {
+					"titleNView": true,
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"pullToRefresh": {
+						"support": false
+					}
+				}
+			}
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false,
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"pullToRefresh": {
+						"support": false
+					}
+				}
+			}
+		}, {
+			"path": "pages/connect/connect",
+			"style": {
+				"navigationBarTitleText": "工程环境模式配置",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"subNVues": [{
+						"id": "engineer-popup",
+						"path": "pages/connect/user-popup",
+						"type": "popup",
+						"style": {
+							"background": "transparent"
+						}
+					}]
+				}
+			}
+		}, {
+			"path": "pages/order/orderInfo",
+			"style": {
+				"navigationBarTitleText": "工单详情",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path" : "pages/inspection/inspection",
+			"style" : 
+			{
+				"navigationBarTitleText" : "巡查系统"
+			}
+		},
+		{
+			"path" : "pages/patrol/patrol",
+			"style" : 
+			{
+				"navigationBarTitleText" : "巡检系统"
+			}
+		},
+		{
+			"path" : "pages/cardReplace/cardReplace",
+			"style" : 
+			{
+				"navigationBarTitleText" : "卡片更换"
+			}
+		},
+		{
+			"path" : "pages/clockRecord/clockRecord",
+			"style" : 
+			{
+				"navigationBarTitleText" : "打卡记录"
+			}
+		},
+		{
+			"path" : "pages/exceptionReport/exceptionReport",
+			"style" : 
+			{
+				"navigationBarTitleText" : "异常上报"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "webo",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF",
+		"app-plus": {
+			"titleNView": {
+				"titleColor": "#333333",
+				"titleSize": "16px",
+				"backButton": {
+					"color": "#9f4b63"
+				},
+				"splitLine": {
+					"color": "#E5E5E5"
+				}
+			}
+		}
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "", //模式名称
+			"path": "", //启动页面，必选
+			"query": {} //启动参数，在页面的onLoad函数里面得到
+		}]
+	}
+}

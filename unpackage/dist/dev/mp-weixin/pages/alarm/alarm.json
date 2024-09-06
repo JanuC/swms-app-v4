@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "告警列表",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 5,
+  "usingComponents": {
+    "uni-search-bar": "/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar",
+    "uni-datetime-picker": "/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker",
+    "uni-load-more": "/uni_modules/uni-load-more/components/uni-load-more/uni-load-more"
+  }
+}

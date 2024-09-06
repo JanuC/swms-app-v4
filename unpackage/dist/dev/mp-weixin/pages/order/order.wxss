@@ -1,0 +1,233 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.order .search.data-v-127632e4 {
+  height: 200rpx;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+}
+.order .search .grid-row.data-v-127632e4 {
+  display: flex;
+  width: 100%;
+  height: 62rpx;
+}
+.order .search .grid-row .grid-box.data-v-127632e4 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+}
+.order .search .grid-row .grid-box image.data-v-127632e4 {
+  width: 22rpx;
+  height: 22rpx;
+  margin-left: 10rpx;
+}
+.order .search .grid-row .active text.data-v-127632e4 {
+  color: #dd5b81 !important;
+  position: relative;
+}
+.order .search .grid-row .active text.data-v-127632e4::after {
+  width: 60rpx;
+  height: 5rpx;
+  background-color: #dd5b81;
+  border-radius: 2.5rpx;
+  content: '';
+  position: absolute;
+  margin-left: -15px;
+  bottom: -30rpx;
+  left: 50%;
+}
+.order .list.data-v-127632e4 {
+  margin: 30rpx;
+  height: auto;
+  overflow: auto;
+  padding-top: 200rpx;
+  padding-bottom: 200rpx;
+}
+.order .list .list-item.data-v-127632e4 {
+  width: 100%;
+  height: 310rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+.order .list .list-item .list-title.data-v-127632e4 {
+  height: 86rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  border-bottom: solid 1rpx #eeeeee;
+}
+.order .list .list-item .list-title .list-title-left.data-v-127632e4,
+.order .list .list-item .list-title .list-title-right.data-v-127632e4 {
+  display: flex;
+  align-items: center;
+}
+.order .list .list-item .list-title .list-title-left text.data-v-127632e4:first-child,
+.order .list .list-item .list-title .list-title-right text.data-v-127632e4:first-child {
+  font-family: PingFang-SC-Medium;
+  font-size: 28rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 35.79rpx;
+  letter-spacing: 0rpx;
+  color: #333333;
+  margin-right: 10rpx;
+}
+.order .list .list-item .list-title .list-title-left text.data-v-127632e4:last-child,
+.order .list .list-item .list-title .list-title-right text.data-v-127632e4:last-child {
+  font-family: PingFang-SC-Regular;
+  font-size: 24rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 35.79rpx;
+  letter-spacing: 0rpx;
+  color: #666666;
+}
+.order .list .list-item .list-title .list-title-right.data-v-127632e4 {
+  font-family: PingFang-SC-Regular;
+  font-size: 24rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 35.79rpx;
+  letter-spacing: 0rpx;
+}
+.order .list .list-item .list-content.data-v-127632e4 {
+  padding: 30rpx 30rpx 0 30rpx;
+}
+.order .list .list-item .list-content .list-content-item.data-v-127632e4 {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 25rpx;
+}
+.order .list .list-item .list-content .list-content-item .list-content-label.data-v-127632e4 {
+  font-family: PingFang-SC-Medium;
+  font-size: 28rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 35.79rpx;
+  letter-spacing: 0rpx;
+  color: #999999;
+  padding-right: 30rpx;
+  width: 110rpx;
+}
+.order .list .list-item .list-content .list-content-item .list-content-value.data-v-127632e4 {
+  font-family: PingFang-SC-Medium;
+  font-size: 28rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 35.79rpx;
+  letter-spacing: 0rpx;
+  color: #333333;
+  flex: 1;
+}
+.order .list .list-item .list-footer.data-v-127632e4 {
+  border-top: solid 1rpx #eeeeee;
+  font-family: SourceHanSansCN-Regular;
+  font-size: 28rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  letter-spacing: 0rpx;
+  color: #306dfe;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.order .list .new-alarm .list-title.data-v-127632e4 {
+  background-color: #dd5b81;
+}
+.order .list .new-alarm .list-title text.data-v-127632e4 {
+  color: #fff !important;
+}
+.order .order-footer.data-v-127632e4 {
+  height: 170rpx;
+  padding: 10rpx 30rpx 0 30rpx;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: calc(100vw - 60rpx);
+}
+.order .order-footer .btn.data-v-127632e4 {
+  width: 100%;
+  height: 80rpx;
+  background-color: #dd5b81 !important;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: SourceHanSansCN-Regular;
+  font-size: 28rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  letter-spacing: 0rpx;
+  color: #ffffff;
+  opacity: 1;
+}
+.order .order-footer .btn image.data-v-127632e4 {
+  width: 44rpx;
+  height: 44rpx;
+  padding-right: 10rpx;
+}
+.order .order-footer .btn.data-v-127632e4:hover {
+  opacity: 0.6;
+}
+.status0.data-v-127632e4 {
+  color: #f33649 !important;
+}
+.status1.data-v-127632e4 {
+  color: #28bd84 !important;
+}
+.status2.data-v-127632e4 {
+  color: #666666 !important;
+}
+.status3.data-v-127632e4 {
+  color: #f33649 !important;
+}
+.level1.data-v-127632e4 {
+  color: #cf2c25 !important;
+}
+.level2.data-v-127632e4 {
+  color: #f89600 !important;
+}
+.level3.data-v-127632e4 {
+  color: #ffc600 !important;
+}
+.level4.data-v-127632e4 {
+  color: #4483e3 !important;
+}
+.text-hide.data-v-127632e4 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+

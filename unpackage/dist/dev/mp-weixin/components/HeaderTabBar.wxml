@@ -1,0 +1,1 @@
+<view><view class="status_bar"></view><view class="header-wrap"><block wx:for="{{tabs}}" wx:for-item="item" wx:for-index="__i0__" wx:key="id"><view data-event-opts="{{[['tap',[['onToggle',['$0'],[[['tabs','id',item.id,'id']]]]]]]}}" class="{{['tab-item',active===item.id?'active':'']}}" bindtap="__e"><text class="tab-item__text">{{item.name}}</text></view></block></view></view>

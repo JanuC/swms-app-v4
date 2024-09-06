@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/devOps/devOps",
+    "pages/alarm/alarm",
+    "pages/alarm/alarmInfo",
+    "pages/alarm/audio",
+    "pages/order/order",
+    "pages/login/login",
+    "pages/connect/connect",
+    "pages/order/orderInfo"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "webo",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF"
+  },
+  "usingComponents": {}
+}

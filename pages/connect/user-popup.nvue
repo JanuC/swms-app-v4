@@ -1,0 +1,240 @@
+<template>
+	<view class="wrapper" @click="closeMask">
+		<view class="popup-body">
+			<text v-if="typeStyle === 'default'" class="popup-title">{{title}}</text>
+			<text v-if="typeStyle === 'error'" class="error-title">{{title}}</text>
+			<view class="task-tips__content" v-if="taskSubmitTips == 'success'">
+				<view class="task-submit__content">
+					<icon type="success" size="15" color="#9f4b63" />
+					<text class="success-tips">{{successTipsTitle}}</text>
+				</view>
+				<view class="success-count-down">
+					<text class="count-down">倒计时:{{second}}秒</text>
+				</view>
+			</view>
+			<view v-else>
+				<text class="popup-content">{{content}}</text>
+			</view>
+			<view class="popup-footer" @click="onConfirm">
+				<text class="popup-footer__button affirm-button">{{affirmButtonText}}</text>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: '温馨提示',
+				content: '内容',
+				affirmButtonText: '确认',
+				affirmType: 1,
+				typeStyle: 'default',
+				taskSubmitTips: '', // success, fail
+				second: 30,
+				timeOut: null
+			}
+		},
+		created() {
+			this.onShowPopup();
+		},
+		onUnload() {
+			uni.$off('onShowUserPopup');
+		},
+		methods: {
+			closeMask() {
+				return false;
+			},
+			onShowPopup() {
+				let _this = this;
+				uni.$on('onShowUserPopup', (data) => {
+					_this.title = data.title || _this.title;
+					_this.content = data.content;
+					_this.affirmButtonText = data.affirmButtonText || _this.affirmButtonText;
+					_this.typeStyle = data.type || _this.typeStyle;
+					_this.taskSubmitTips = data.taskSubmitTips || _this.taskSubmitTips;
+					_this.successTipsTitle = data.successTipsTitle || _this.successTipsTitle;
+					if (_this.taskSubmitTips == 'success') {
+						_this.second = data.second || _this.second;
+						_this.affirmType = data.affirmType || _this.affirmType;
+						clearInterval(this.timeOut);
+						_this.onCountdown();
+					}
+					const subNVue = uni.getCurrentSubNVue();
+					subNVue.show('zoom-fade-out', 250);
+				})
+			},
+			onConfirm() {
+				clearInterval(this.timeOut);
+				if(this.affirmType === 1) {
+					const subNVue = uni.getCurrentSubNVue();
+					subNVue.hide();
+				} else {
+					const subNVue = uni.getCurrentSubNVue();
+					subNVue.hide();
+					uni.$emit('onUserPopupConfirm');
+					uni.$off('onUserPopupConfirm');
+				}
+			},
+			// 倒计时
+			onCountdown() {
+				const subNVue = uni.getCurrentSubNVue();
+				this.timeOut = setInterval(() => {
+					if (this.second > 0) {
+						this.second--
+					} else if (this.second == 0) {
+						clearInterval(this.timeOut);
+						const subNVue = uni.getCurrentSubNVue();
+						subNVue.hide();
+						uni.$emit('onUserPopupConfirm');
+						uni.$off('onUserPopupConfirm');
+					}
+				}, 1000)
+			}
+		}
+	}
+</script>
+
+<style>
+	.wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0);
+		justify-content: center;
+		align-items: center;
+	}
+
+	.popup-body {
+		border-radius: 16rpx;
+		background-color: #FFFFFF;
+		position: absolute;
+		left: 55rpx;
+		right: 55rpx;
+	}
+
+	.popup-title {
+		text-align: center;
+		font-size: 18px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		margin-left: 14px;
+		margin-right: 14px;
+		color: #333333;
+		border-bottom-width: 1rpx;
+		border-bottom-color: #e5e5e5;
+	}
+
+	.error-title {
+		text-align: center;
+		font-size: 36rpx;
+		padding: 30rpx;
+		color: #ff3b30;
+		border-bottom-width: 1rpx;
+		border-bottom-color: #e5e5e5;
+	}
+
+	.popup-content {
+		text-align: center;
+		line-height: 24px;
+		font-size: 16px;
+		padding: 15px;
+		color: #333333;
+	}
+
+	.popup-footer {
+		height: 58px;
+		line-height: 58px;
+		border-top: 1rpx solid #e5e5e5;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.popup-footer__button {
+		font-size: 18px;
+	}
+
+	.affirm-button {
+		color: #9f4b63;
+	}
+
+	.cancel-button {
+		color: #666666;
+	}
+
+	.button-wrapper {
+		flex: 1;
+		height: 96rpx;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.cancel-button-wrapper {
+		border-right-width: 1rpx;
+		border-right-color: #e5e5e5;
+	}
+
+	.success-tips {
+		font-size: 30rpx;
+		color: #9f4b63;
+		margin-left: 10rpx;
+	}
+
+	.fail-tips {
+		font-size: 30rpx;
+		color: #fa5151;
+		margin-left: 10rpx;
+	}
+
+	.count-down {
+		text-align: center;
+		font-size: 26rpx;
+		color: #707070;
+	}
+
+	.task-tips__content {
+		padding: 40rpx;
+	}
+
+	.task-submit__content {
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 20rpx;
+	}
+
+	.success-content {
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 20rpx;
+	}
+
+	.fail-tips__wrap {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.fail-tips__content {
+		font-size: 26rpx;
+		line-height: 40rpx;
+		color: #000;
+	}
+
+	.location-info {
+		font-size: 26rpx;
+		line-height: 40rpx;
+		color: #306dfe;
+	}
+
+	.success-tips__contnet {
+		font-size: 26rpx;
+		line-height: 35rpx;
+		color: #000000;
+	}
+</style>

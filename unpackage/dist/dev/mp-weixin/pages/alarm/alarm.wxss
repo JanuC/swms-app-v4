@@ -1,0 +1,222 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.alarm .search.data-v-797937aa {
+  height: 230rpx;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.alarm .search > view.data-v-797937aa:first-child {
+  background: #f5f5f5 !important;
+}
+.alarm .search .grid-row.data-v-797937aa {
+  position: relative;
+}
+.alarm .search .grid-row .uni-grid.data-v-797937aa {
+  display: flex;
+  width: 100%;
+}
+.alarm .search .grid-row .uni-grid .grid-box.data-v-797937aa {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+}
+.alarm .search .grid-row .uni-grid .grid-box image.data-v-797937aa {
+  width: 22rpx;
+  height: 22rpx;
+  margin-left: 10rpx;
+}
+.alarm .search .grid-row .uni-grid .active .text.data-v-797937aa {
+  color: #dd5b81 !important;
+}
+.alarm .search .grid-row .grid-drawer.data-v-797937aa {
+  position: absolute;
+  top: 90rpx;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+  overflow: auto;
+  background-color: #fff;
+  overflow: hidden;
+}
+.alarm .search .grid-row .grid-drawer .grid-drawer-item.data-v-797937aa {
+  height: 100%;
+}
+.alarm .search .grid-row .grid-drawer .grid-drawer-item view.data-v-797937aa {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+  font-family: PingFang-SC-Medium;
+  font-size: 28rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 34.05rpx;
+  letter-spacing: 0rpx;
+  color: #333333;
+}
+.alarm .search .grid-row .open.data-v-797937aa {
+  height: 400rpx;
+}
+.alarm .list.data-v-797937aa {
+  margin: 30rpx;
+  height: auto;
+  overflow: auto;
+  padding-top: 230rpx;
+}
+.alarm .list .list-item.data-v-797937aa {
+  width: 100%;
+  height: 370rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+.alarm .list .list-item .list-title.data-v-797937aa {
+  height: 86rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  border-bottom: solid 1rpx #eeeeee;
+}
+.alarm .list .list-item .list-title .list-title-left.data-v-797937aa,
+.alarm .list .list-item .list-title .list-title-right.data-v-797937aa {
+  display: flex;
+  align-items: center;
+}
+.alarm .list .list-item .list-title .list-title-left text.data-v-797937aa:first-child,
+.alarm .list .list-item .list-title .list-title-right text.data-v-797937aa:first-child {
+  font-family: PingFang-SC-Medium;
+  font-size: 28rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 35.79rpx;
+  letter-spacing: 0rpx;
+  color: #333333;
+  margin-right: 10rpx;
+}
+.alarm .list .list-item .list-title .list-title-left text.data-v-797937aa:last-child,
+.alarm .list .list-item .list-title .list-title-right text.data-v-797937aa:last-child {
+  font-family: PingFang-SC-Regular;
+  font-size: 24rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 35.79rpx;
+  letter-spacing: 0rpx;
+  color: #666666;
+}
+.alarm .list .list-item .list-title .list-title-right.data-v-797937aa {
+  font-family: PingFang-SC-Regular;
+  font-size: 24rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 35.79rpx;
+  letter-spacing: 0rpx;
+}
+.alarm .list .list-item .list-content.data-v-797937aa {
+  padding: 30rpx 30rpx 0 30rpx;
+}
+.alarm .list .list-item .list-content .list-content-item.data-v-797937aa {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 25rpx;
+}
+.alarm .list .list-item .list-content .list-content-item .list-content-label.data-v-797937aa {
+  font-family: PingFang-SC-Medium;
+  font-size: 28rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 35.79rpx;
+  letter-spacing: 0rpx;
+  color: #999999;
+  padding-right: 30rpx;
+  width: 110rpx;
+}
+.alarm .list .list-item .list-content .list-content-item .list-content-value.data-v-797937aa {
+  font-family: PingFang-SC-Medium;
+  font-size: 28rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 35.79rpx;
+  letter-spacing: 0rpx;
+  color: #333333;
+  flex: 1;
+}
+.alarm .list .list-item .list-footer.data-v-797937aa {
+  border-top: solid 1rpx #eeeeee;
+  font-family: SourceHanSansCN-Regular;
+  font-size: 28rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  letter-spacing: 0rpx;
+  color: #306dfe;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.alarm .list .new-alarm .list-title.data-v-797937aa {
+  background-color: #dd5b81;
+}
+.alarm .list .new-alarm .list-title text.data-v-797937aa {
+  color: #fff !important;
+}
+.status0.data-v-797937aa {
+  color: #f33649 !important;
+}
+.status1.data-v-797937aa {
+  color: #28bd84 !important;
+}
+.status2.data-v-797937aa {
+  color: #666666 !important;
+}
+.status3.data-v-797937aa {
+  color: #f33649 !important;
+}
+.level1.data-v-797937aa {
+  color: #cf2c25 !important;
+}
+.level2.data-v-797937aa {
+  color: #f89600 !important;
+}
+.level3.data-v-797937aa {
+  color: #ffc600 !important;
+}
+.level4.data-v-797937aa {
+  color: #4483e3 !important;
+}
+.text-hide.data-v-797937aa {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
